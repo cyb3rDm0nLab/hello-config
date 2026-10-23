@@ -1,6 +1,5 @@
 # Lab environment (EKS in eu-north-1, created and destroyed each session)
 # image.tag is written by the hello-service CI pipeline: do not edit by hand
 image:
-  tag: "initial"
-
+  tag: "6ef9855a00e3bd9f4eb463683846e71d0f825251"
 replicaCount: 2
