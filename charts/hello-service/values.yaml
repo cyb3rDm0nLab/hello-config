@@ -1,0 +1,28 @@
+# Defaults. Each environment overrides what it needs in environments/<env>/values.yaml
+replicaCount: 2
+
+image:
+  repository: ghcr.io/cyb3rdm0nlab/hello-service
+  tag: ""                 # set by the CI pipeline to the commit SHA
+  pullPolicy: IfNotPresent
+
+service:
+  port: 80
+  targetPort: 8080
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    memory: 512Mi
+
+# Rolling update with zero downtime: never go below the desired replicas
+strategy:
+  maxUnavailable: 0
+  maxSurge: 1
+
+# Needs the Prometheus Operator CRDs: enable it once kube-prometheus-stack is installed (phase 4)
+serviceMonitor:
+  enabled: false
+  interval: 30s
